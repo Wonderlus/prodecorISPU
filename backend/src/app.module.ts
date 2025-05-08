@@ -13,8 +13,6 @@ import { OrderModule } from './app/order/order.module';
 import { OrderEntity } from './models/order.entity';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ImageEntity } from './models/image.entity';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 
 @Module({
   imports: [
