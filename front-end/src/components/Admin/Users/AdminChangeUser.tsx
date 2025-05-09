@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Admin from "../Admin";
 import styles from "../Admin.module.scss";
-import { UserDto, UserUpdateDtoAdmin } from "../../../dto/user";
+import { UserUpdateDtoAdmin } from "../../../dto/user";
 import { useLocation } from "react-router-dom";
 import { getUser, updateUser } from "../../../api/user.api";
 
@@ -9,7 +9,7 @@ const AdminChangeUser = () => {
     const location = useLocation();
     const id = location.pathname.split("/")[3];
 
-    const [user, setUser] = useState<UserDto>();
+    // const [user, setUser] = useState<UserDto>();
     const [userChange, setUserChange] = useState<UserUpdateDtoAdmin>({
         login: "",
         first: "",
@@ -22,7 +22,7 @@ const AdminChangeUser = () => {
         const fetchData = async () => {
             try {
                 const user = await getUser(id);
-                setUser(user);
+                // setUser(user);
                 setUserChange(() => ({
                     login: user.login,
                     first: user.first,
@@ -46,7 +46,6 @@ const AdminChangeUser = () => {
             console.log(error);
         }
     };
-    console.log(user);
     return (
         <div className={styles.containerPage}>
             <Admin />

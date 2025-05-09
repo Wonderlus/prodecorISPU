@@ -172,6 +172,7 @@ export class ProductService {
         price: updatedProduct.price,
         discount: updatedProduct.discount,
         type: updatedProduct.type,
+        images: updatedProduct.images,
       },
     );
   }

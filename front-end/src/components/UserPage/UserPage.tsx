@@ -27,7 +27,7 @@ const UserPage = () => {
             navigate("/");
         }
     }, []);
-
+    console.log(favorite);
     const id = JSON.parse(localStorage.getItem("user") || "{}");
 
     useEffect(() => {
@@ -204,7 +204,7 @@ const UserPage = () => {
                                     }}
                                 >
                                     <img
-                                        src="bedtatran.jpg"
+                                        src={``}
                                         alt="product"
                                         className={styles.product_img}
                                     />

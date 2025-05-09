@@ -37,7 +37,7 @@ const AdminUsers = () => {
                     }}
                     className={styles.button}
                 >
-                    Создать
+                    Создать пользователя
                 </button>
             </div>
             {users?.map((u) => (

@@ -5,4 +5,5 @@ export interface FavoritesDto {
     discount: number;
     user_id: string;
     product_id: string;
+    images: string[];
 }

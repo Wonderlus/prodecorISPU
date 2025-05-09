@@ -78,7 +78,8 @@ export class OrderDto {
   @Type(() => Values)
   readonly values: Values;
 
-  @ApiProperty({ type: OrderProductDto, isArray: true })
-  @Type(() => OrderProductDto)
-  readonly products: OrderProductDto[];
+  @ApiProperty({ type: String, isArray: true })
+  @IsUUID(4)
+  @Type(() => String)
+  readonly product_ids: string[];
 }

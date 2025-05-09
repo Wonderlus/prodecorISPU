@@ -136,7 +136,7 @@ const Header = () => {
                             </button>
                             {user?.role === "admin" && (
                                 <button
-                                    onClick={() => navigate("/admin")}
+                                    onClick={() => navigate("/admin/users")}
                                     className={styles.link}
                                 >
                                     Админка
@@ -172,7 +172,7 @@ const Header = () => {
 
                                 {user?.role === "admin" && (
                                     <button
-                                        onClick={() => navigate("/admin")}
+                                        onClick={() => navigate("/admin/users")}
                                         className={styles.link}
                                     >
                                         Админка

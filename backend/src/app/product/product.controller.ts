@@ -16,7 +16,11 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { ODataRequestDto } from 'src/dto/odata.dto';
 import { ProductService } from './product.service';
-import { CreateProductDto, ProductImageDto } from 'src/dto/product.dto';
+import {
+  CreateProductDto,
+  ProductDto,
+  ProductImageDto,
+} from 'src/dto/product.dto';
 import { IdDto, UserIdDto } from 'src/dto/common.dto';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
@@ -85,5 +89,10 @@ export class ProductController {
   @Delete(':id')
   deleteProduct(@Param() id: IdDto) {
     return this.productService.deleteProduct(id);
+  }
+
+  @Put(':id')
+  updateProduct(@Param() id: IdDto, @Body() dto: ProductDto) {
+    return this.productService.updateProduct({ ...dto, id: id.id });
   }
 }

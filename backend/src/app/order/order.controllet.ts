@@ -10,6 +10,10 @@ import { IdDto } from 'src/dto/common.dto';
 export class OrderController {
   constructor(private orderService: OrderService) {}
 
+  @Get('orders')
+  getAllOrders() {
+    return this.orderService.getAllOrders();
+  }
   @Get()
   getOrders(@Query() dto: FavoritesRequestDto) {
     return this.orderService.getOrders(dto);

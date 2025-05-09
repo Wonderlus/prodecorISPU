@@ -18,6 +18,14 @@ export class OrderService {
     return this.dataSource.manager;
   }
 
+  async getAllOrders() {
+    const orderEntities = await this.manager.find(OrderEntity);
+    const productIds = [];
+    orderEntities.forEach((item) => productIds.push(...item.product_ids));
+
+    return MapperOrder.toDtos(orderEntities);
+  }
+
   async getOrders(dto: FavoritesRequestDto): Promise<OrderDto[]> {
     const orderEntities = await this.manager.find(OrderEntity, {
       where: {
@@ -27,17 +35,7 @@ export class OrderService {
 
     if (!orderEntities) return [];
 
-    const productsIds = [];
-
-    orderEntities.forEach((item) => productsIds.push(...item.product_ids));
-
-    const productEntities = await this.manager.findBy(ProductEntity, {
-      id: Any(productsIds),
-    });
-
-    const mapProducts = mapBy(productEntities, (p) => p.id);
-
-    return MapperOrder.toDtos(orderEntities, mapProducts);
+    return MapperOrder.toDtos(orderEntities);
   }
 
   async getOrder(dto: IdDto): Promise<OrderDto> {
@@ -53,7 +51,7 @@ export class OrderService {
       id: Any(orderEntity.product_ids),
     });
 
-    return MapperOrder.toDto(orderEntity, productEntities);
+    return MapperOrder.toDto(orderEntity);
   }
 
   async createOrder(dto: CreateOrderDto) {

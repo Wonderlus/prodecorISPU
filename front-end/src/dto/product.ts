@@ -21,7 +21,7 @@ export interface ProductRequestDto {
 // top - сколько товаров получаю
 // skip - сколько товаро пропускаю
 
-export interface ProductCreateDto {
+export interface ProductDto {
     id: string;
     title: string;
     description: string;
@@ -30,3 +30,7 @@ export interface ProductCreateDto {
     type: ProductType;
     images: string[];
 }
+
+export interface ProductCreateDto extends Omit<ProductDto, "id" | "type"> {}
+
+export interface ProductCreateDtoAdmin extends Omit<ProductCreateDto, "id"> {}

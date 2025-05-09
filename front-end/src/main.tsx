@@ -14,6 +14,8 @@ import AdminProducts from "./components/Admin/Products/AdminProducts.tsx";
 import AdminOrders from "./components/Admin/Orders/AdminOrders.tsx";
 import AdminChangeUser from "./components/Admin/Users/AdminChangeUser.tsx";
 import AdminCreateUser from "./components/Admin/Users/AdminCreateUser.tsx";
+import AdminCreateProduct from "./components/Admin/Products/AdminCreateProduct.tsx";
+import AdminChangeProduct from "./components/Admin/Products/AdminChangeProduct.tsx";
 
 // const filter = `(contains(tolower(type), ''))`;
 
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
             {
                 path: "admin/products",
                 element: <AdminProducts />,
+            },
+            {
+                path: "admin/products/create",
+                element: <AdminCreateProduct />,
+            },
+            {
+                path: "admin/products/:productId",
+                element: <AdminChangeProduct />,
             },
             {
                 path: "admin/orders",

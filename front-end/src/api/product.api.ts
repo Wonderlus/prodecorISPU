@@ -1,4 +1,8 @@
-import { ProductCreateDto, ProductRequestDto } from "../dto/product";
+import {
+    ProductCreateDto,
+    ProductCreateDtoAdmin,
+    ProductRequestDto,
+} from "../dto/product";
 import { client } from "./api";
 
 export const getProducts = async (data: ProductRequestDto) => {
@@ -36,5 +40,17 @@ export const deleteProduct = async (id: string) => {
         url: `/product/${id}`,
     });
 
+    return result.data;
+};
+
+export const updateProduct = async (
+    id: string,
+    data: ProductCreateDtoAdmin
+) => {
+    const result = await client({
+        method: "PUT",
+        url: `/product/${id}`,
+        data,
+    });
     return result.data;
 };

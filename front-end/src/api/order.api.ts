@@ -14,3 +14,12 @@ export const createOrder = async (data: {
     const result = await client({ method: "POST", url: "/order", data });
     return result.data as OrderDto;
 };
+
+export const getOrders = async () => {
+    const result = await client({
+        method: "GET",
+        url: "/order/orders",
+    });
+
+    return result.data as OrderDto[];
+};

@@ -20,7 +20,7 @@ const Basket = () => {
             return sum + item.price * item.quantity;
         }, 0)
     );
-
+    console.log(basket);
     const [changedBasket, setChangedBasket] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
@@ -78,7 +78,7 @@ const Basket = () => {
         event.preventDefault();
         const data = {
             user_id: userId,
-            product_ids: basket.map((item) => item.product_id),
+            product_ids: basket.map((item) => item.id),
             values: {
                 name: userOrder.first,
                 address: userOrder.address,
@@ -86,6 +86,7 @@ const Basket = () => {
                 total: sumPrice,
             },
         };
+        console.log(data);
         console.log(data);
         if (data.product_ids.length !== 0) {
             try {
