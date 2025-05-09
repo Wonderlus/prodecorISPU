@@ -9,6 +9,11 @@ import ProductPage from "./components/ProductPage/ProductPage.tsx";
 import UserPage from "./components/UserPage/UserPage.tsx";
 import Special from "./components/Special/Special.tsx";
 import Admin from "./components/Admin/Admin.tsx";
+import AdminUsers from "./components/Admin/Users/AdminUsers.tsx";
+import AdminProducts from "./components/Admin/Products/AdminProducts.tsx";
+import AdminOrders from "./components/Admin/Orders/AdminOrders.tsx";
+import AdminChangeUser from "./components/Admin/Users/AdminChangeUser.tsx";
+import AdminCreateUser from "./components/Admin/Users/AdminCreateUser.tsx";
 
 // const filter = `(contains(tolower(type), ''))`;
 
@@ -42,8 +47,29 @@ const router = createBrowserRouter([
                 element: <Special />,
             },
             {
-                path: "/admin",
+                path: "admin",
                 element: <Admin />,
+                children: [],
+            },
+            {
+                path: "admin/users",
+                element: <AdminUsers />,
+            },
+            {
+                path: "admin/users/create",
+                element: <AdminCreateUser />,
+            },
+            {
+                path: "admin/products",
+                element: <AdminProducts />,
+            },
+            {
+                path: "admin/orders",
+                element: <AdminOrders />,
+            },
+            {
+                path: "admin/users/:userId",
+                element: <AdminChangeUser />,
             },
         ],
     },

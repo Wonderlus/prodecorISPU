@@ -14,4 +14,8 @@ export class MapperUser {
       role: u.role,
     };
   }
+
+  static toDtos(users: UserEntity[]): UserDto[] {
+    return users.map((u) => MapperUser.toDto(u));
+  }
 }

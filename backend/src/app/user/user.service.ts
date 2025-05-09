@@ -26,6 +26,11 @@ export class UserService {
     return this.dataSource.manager;
   }
 
+  async getUsers() {
+    const users = await this.manager.find(UserEntity);
+    return MapperUser.toDtos(users);
+  }
+
   async getUser(dto: IdDto) {
     const userEntity = await this.manager.findOneBy(UserEntity, {
       id: dto.id,
@@ -53,6 +58,7 @@ export class UserService {
         id: dto.id,
       },
       {
+        login: updatedUser.login,
         first: updatedUser.first,
         last: updatedUser.last,
         second: updatedUser.second,

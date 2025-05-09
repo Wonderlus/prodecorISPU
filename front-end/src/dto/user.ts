@@ -21,6 +21,8 @@ export interface UserDto extends UserLoginDto {
 export interface UserUpdateDto
     extends Omit<UserDto, "id" | "login" | "password" | "role"> {}
 
+export interface UserUpdateDtoAdmin
+    extends Omit<UserDto, "id" | "password" | "role"> {}
 export interface UserRegisterDto extends Omit<UserDto, "id"> {}
 
 export interface UserPasswordDto extends Omit<UserLoginDto, "login"> {

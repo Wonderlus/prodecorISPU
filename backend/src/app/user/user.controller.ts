@@ -24,6 +24,11 @@ import { EmailValidationPipe } from 'src/validation/email';
 export class UserController {
   constructor(private userService: UserService) {}
 
+  @Get()
+  getUsers() {
+    return this.userService.getUsers();
+  }
+
   @Get(':id')
   getUser(@Param() dto: IdDto) {
     return this.userService.getUser(dto);

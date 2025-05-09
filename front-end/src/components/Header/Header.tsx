@@ -12,10 +12,8 @@ const Header = () => {
     const [isActive, setActive] = useState(false);
     const [user, setUser] = useState<UserDto>();
     const navigate = useNavigate();
-    console.log(localStorage);
     const token = localStorage.getItem("token");
     const id = JSON.parse(localStorage.getItem("user") || "{}");
-    console.log(id);
     const [focus, setFocus] = useState(false);
     const [focusInput, setFocusInput] = useState("");
     const [products, setProducts] = useState<ProductCreateDto[]>([]);
@@ -46,7 +44,6 @@ const Header = () => {
         fetchData();
     }, []);
 
-    console.log(user);
     return (
         <>
             <Modal isActive={isActive} setActive={setActive} />
