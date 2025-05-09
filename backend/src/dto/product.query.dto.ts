@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
-import { IsUUID, IsString, IsNumber, IsEnum } from 'class-validator';
+import { IsUUID, IsString, IsNumber, IsEnum, IsArray } from 'class-validator';
 import { ProductType } from 'src/enum/product.type';
+import { string } from 'yargs';
 
 export class ProductQueryDto {
   @ApiProperty({ type: String, format: 'uuid' })
@@ -31,4 +32,8 @@ export class ProductQueryDto {
   @ApiProperty({ enum: ProductType })
   @IsEnum(ProductType)
   readonly product_type: ProductType;
+
+  @ApiProperty({ type: string, isArray: true })
+  @IsArray()
+  readonly product_images: string[];
 }

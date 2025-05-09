@@ -11,6 +11,7 @@ export class MapperUser {
       second: u.second,
       phone: u.phone,
       news: u.news,
+      role: u.role,
     };
   }
 }

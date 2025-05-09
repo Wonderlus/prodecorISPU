@@ -29,4 +29,7 @@ export class UserEntity {
 
   @Column({ type: 'integer', default: 0 })
   total_orders: number;
+
+  @Column('text')
+  readonly role: string;
 }

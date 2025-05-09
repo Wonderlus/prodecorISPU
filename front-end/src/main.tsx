@@ -8,6 +8,7 @@ import MainPage from "./components/MainPage/MainPage.tsx";
 import ProductPage from "./components/ProductPage/ProductPage.tsx";
 import UserPage from "./components/UserPage/UserPage.tsx";
 import Special from "./components/Special/Special.tsx";
+import Admin from "./components/Admin/Admin.tsx";
 
 // const filter = `(contains(tolower(type), ''))`;
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: "special",
                 element: <Special />,
+            },
+            {
+                path: "/admin",
+                element: <Admin />,
             },
         ],
     },

@@ -41,13 +41,11 @@ export class ProductDto extends IdDto {
   @Type(() => String)
   readonly favorites_id?: string;
 
-  @ApiProperty({ type: String, format: 'uuid', isArray: true })
+  @ApiProperty({ type: String, isArray: true })
   @IsArray()
   @IsOptional()
-  @IsUUID(4)
-  @Expose()
   @Type(() => String)
-  readonly image_ids?: string[];
+  readonly images?: string[];
 }
 
 export class ProductImageDto {

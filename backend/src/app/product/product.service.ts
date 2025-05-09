@@ -81,17 +81,7 @@ export class ProductService {
 
     const mapFavorites = mapBy(favorites, (item) => item.product_id);
 
-    const product_ids = result.map((r) => r.product_id);
-
-    const images = await this.manager.find(ImageEntity, {
-      where: {
-        product_id: Any(product_ids),
-      },
-    });
-
-    const mapImages = groupBy(images, (i) => i.product_id);
-
-    const productList = MapperProduct.toDtos(result, mapFavorites, mapImages);
+    const productList = MapperProduct.toDtos(result, mapFavorites);
 
     return {
       list: productList,
@@ -105,7 +95,7 @@ export class ProductService {
     });
 
     if (!productEntity) {
-      throw new UnprocessableEntityException('User not found');
+      throw new UnprocessableEntityException('Product not found');
     }
 
     const favorites = await this.manager.findBy(FavoritesEntity, {
@@ -115,16 +105,7 @@ export class ProductService {
 
     const mapFavorites = mapBy(favorites, (item) => item.product_id);
 
-    const images = await this.manager.find(ImageEntity, {
-      where: {
-        product_id: dto.id,
-      },
-      select: { id: true, image: true },
-    });
-
-    const image_ids = images.map((image) => image.image);
-
-    return MapperProduct.toDto(productEntity, mapFavorites, image_ids);
+    return MapperProduct.toDto(productEntity, mapFavorites);
   }
 
   async getProductImage(

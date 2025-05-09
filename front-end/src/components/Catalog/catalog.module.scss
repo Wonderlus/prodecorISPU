@@ -2,7 +2,7 @@
     padding: 150px 20px 70px 20px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
 }
 
 .containerInfo {
@@ -26,7 +26,10 @@
         background-color: #888888;
     }
 }
-
+.img {
+    max-height: 60vh;
+    object-fit: contain;
+}
 .breadcrumbslink {
     cursor: pointer;
     border: 0;
@@ -131,6 +134,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 15px;
+    row-gap: 40px;
 }
 
 //
@@ -153,9 +157,6 @@
     }
 }
 
-.img {
-    width: 100%;
-}
 .title {
     margin-top: 10px;
     margin-bottom: 9px;

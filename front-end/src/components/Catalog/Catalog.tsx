@@ -236,7 +236,7 @@ const Catalog = () => {
                             navigate(`/product/${item.id}`);
                         }}
                     >
-                        {/* img */}
+                        <img className={styles.img} src={item?.images[0]} />
                         <div className={styles.title}>{item.title}</div>
                         <p className={styles.description}>{item.description}</p>
                         {Number(item.discount) === 1 ? (

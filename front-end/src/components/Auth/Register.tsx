@@ -29,6 +29,7 @@ export function Register({
         last: "",
         second: "",
         phone: "",
+        role: "user",
     });
 
     const [repeatPassword, setRepeatPassword] = useState("");

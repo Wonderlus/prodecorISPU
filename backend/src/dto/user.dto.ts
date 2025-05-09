@@ -48,6 +48,11 @@ export class UserDto extends IdDto {
   @IsBoolean()
   @Type(() => Boolean)
   readonly news?: boolean;
+
+  @ApiProperty({ type: String })
+  @IsString()
+  @Type(() => String)
+  readonly role: string;
 }
 
 export class UserCreateDto extends OmitType(UserDto, ['id']) {

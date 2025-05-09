@@ -8,9 +8,8 @@ export class MapperProduct {
   static toDto(
     p: ProductEntity,
     mapFavorites?: Map<string, FavoritesEntity>,
-    image_ids?: string[],
   ): ProductDto {
-    const favoites = mapFavorites.get(p.id);
+    const favorites = mapFavorites.get(p.id);
     return {
       id: p.id,
       title: p.title,
@@ -18,23 +17,16 @@ export class MapperProduct {
       discount: p.discount,
       price: p.price,
       type: p.type,
-      favorites_id: favoites ? favoites.id : null,
-      image_ids,
+      favorites_id: favorites ? favorites.id : null,
+      images: p.images,
     };
   }
 
   static toDtos(
     p: ProductQueryDto[],
     mapFavorites?: Map<string, FavoritesEntity>,
-    mapImages?: Map<string, ImageEntity[]>,
   ): ProductDto[] {
     return p.map((item) => {
-      const image = mapImages.get(item.product_id);
-
-      let image_ids: string[] = [];
-
-      if (image) image_ids = image.map((item) => item.image);
-
       return this.toDto(
         {
           id: item.product_id,
@@ -43,9 +35,9 @@ export class MapperProduct {
           discount: item.product_discount,
           price: item.product_price,
           type: item.product_type,
+          images: item.product_images,
         },
         mapFavorites,
-        image_ids,
       );
     });
   }

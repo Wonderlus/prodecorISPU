@@ -1,5 +1,6 @@
 import { ProductType } from 'src/enum/product.type';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { array } from 'yargs';
 
 @Entity({ name: 'product' })
 export class ProductEntity {
@@ -20,4 +21,7 @@ export class ProductEntity {
 
   @Column('text')
   readonly type: ProductType;
+
+  @Column('text', { array: true })
+  readonly images?: string[];
 }

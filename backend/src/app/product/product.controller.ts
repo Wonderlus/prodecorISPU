@@ -40,42 +40,42 @@ export class ProductController {
     return this.productService.getProduct({ ...dto, ...user_id });
   }
 
-  @Get(':id/image/:image_id')
-  async getProductImage(
-    @Headers('if-none-match') etag: string,
-    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
-    @Param('image_id', new ParseUUIDPipe({ version: '4' })) image_id: string,
-    @Res({ passthrough: true }) response: FastifyReply,
-  ) {
-    const key = `image_${id}_${image_id}`;
+  // @Get(':id/image/:image_id')
+  // async getProductImage(
+  //   @Headers('if-none-match') etag: string,
+  //   @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+  //   @Param('image_id', new ParseUUIDPipe({ version: '4' })) image_id: string,
+  //   @Res({ passthrough: true }) response: FastifyReply,
+  // ) {
+  //   const key = `image_${id}_${image_id}`;
 
-    const cacheImage = await this.cacheManager.get(key);
+  //   const cacheImage = await this.cacheManager.get(key);
 
-    if (cacheImage === etag) {
-      response.code(304);
-      return;
-    }
+  //   if (cacheImage === etag) {
+  //     response.code(304);
+  //     return;
+  //   }
 
-    const result = await this.productService.getProductImage(id, image_id);
+  //   const result = await this.productService.getProductImage(id, image_id);
 
-    if (!result) return;
+  //   if (!result) return;
 
-    response.header('ETag', result.etag);
+  //   response.header('ETag', result.etag);
 
-    return new StreamableFile(result.buffer);
-  }
+  //   return new StreamableFile(result.buffer);
+  // }
 
-  @Put(':id')
-  setProductImage(
-    @Param('id', new ParseUUIDPipe({ version: '4' }))
-    id: string,
-    @Body() dto: ProductImageDto,
-  ) {
-    return this.productService.setProductImage({
-      image: dto.image,
-      product_id: id,
-    });
-  }
+  // @Put(':id')
+  // setProductImage(
+  //   @Param('id', new ParseUUIDPipe({ version: '4' }))
+  //   id: string,
+  //   @Body() dto: ProductImageDto,
+  // ) {
+  //   return this.productService.setProductImage({
+  //     image: dto.image,
+  //     product_id: id,
+  //   });
+  // }
 
   @Post()
   createProduct(@Body() dto: CreateProductDto) {

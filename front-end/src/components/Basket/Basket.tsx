@@ -166,6 +166,7 @@ const Basket = () => {
                                             (item?.price || 0) *
                                                 (item?.discount || 1)
                                         )}
+                                        <span> </span>
                                         рублей
                                     </div>
                                 </div>

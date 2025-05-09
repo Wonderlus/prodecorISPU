@@ -15,10 +15,11 @@ export interface UserDto extends UserLoginDto {
     second?: string;
     phone?: string;
     news?: boolean;
+    role: string;
 }
 
 export interface UserUpdateDto
-    extends Omit<UserDto, "id" | "login" | "password"> {}
+    extends Omit<UserDto, "id" | "login" | "password" | "role"> {}
 
 export interface UserRegisterDto extends Omit<UserDto, "id"> {}
 

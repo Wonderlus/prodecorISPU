@@ -145,119 +145,205 @@ const ProductPage = () => {
                             >
                                 <div className={styles.article__fill_img}>
                                     <div>
-                                        <SwiperSlide>
-                                            <div
-                                                className={styles.article__img}
+                                        {product &&
+                                        product.images.length > 0 ? (
+                                            <SwiperSlide
+                                                style={{
+                                                    maxHeight: "100%",
+                                                }}
                                             >
-                                                <img
-                                                    src="/background1.jpg"
-                                                    alt=""
+                                                <div
                                                     className={
                                                         styles.article__img
                                                     }
-                                                />
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div
-                                                className={styles.article__img}
-                                            >
-                                                <img
-                                                    src="/background2.jpg"
-                                                    alt=""
+                                                >
+                                                    <img
+                                                        src={`/${product?.images[0]}`}
+                                                        alt=""
+                                                        className={
+                                                            styles.article__img
+                                                        }
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ) : (
+                                            <></>
+                                        )}
+
+                                        {product &&
+                                        product.images.length > 1 ? (
+                                            <SwiperSlide>
+                                                <div
                                                     className={
                                                         styles.article__img
                                                     }
-                                                />
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div
-                                                className={styles.article__img}
-                                            >
-                                                <img
-                                                    src="/background3.jpg"
-                                                    alt=""
+                                                >
+                                                    <img
+                                                        src={`/${product?.images[1]}`}
+                                                        alt=""
+                                                        className={
+                                                            styles.article__img
+                                                        }
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        {product &&
+                                        product.images.length > 2 ? (
+                                            <SwiperSlide>
+                                                <div
                                                     className={
                                                         styles.article__img
                                                     }
-                                                />
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div
-                                                className={styles.article__img}
-                                            >
-                                                <img
-                                                    src="/cart_divan.jpg"
-                                                    alt=""
+                                                >
+                                                    <img
+                                                        src={`/${product?.images[2]}`}
+                                                        alt=""
+                                                        className={
+                                                            styles.article__img
+                                                        }
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        {product &&
+                                        product.images.length > 3 ? (
+                                            <SwiperSlide>
+                                                <div
                                                     className={
                                                         styles.article__img
                                                     }
-                                                />
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div
-                                                className={styles.article__img}
-                                            >
-                                                <img
-                                                    src="/bedtatran.jpg"
-                                                    alt=""
+                                                >
+                                                    <img
+                                                        src={`/${product?.images[3]}`}
+                                                        alt=""
+                                                        className={
+                                                            styles.article__img
+                                                        }
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        {product &&
+                                        product.images.length > 4 ? (
+                                            <SwiperSlide>
+                                                <div
                                                     className={
                                                         styles.article__img
                                                     }
-                                                />
-                                            </div>
-                                        </SwiperSlide>
+                                                >
+                                                    <img
+                                                        src={`/${product?.images[4]}`}
+                                                        alt=""
+                                                        className={
+                                                            styles.article__img
+                                                        }
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ) : (
+                                            <></>
+                                        )}
                                     </div>
                                 </div>
                                 <div className={styles.article__img_bar}>
-                                    <div
-                                        className={styles.article__img_bar_div}
-                                        onClick={() => {
-                                            // setActive(0);
-                                            swiper.slideTo(0);
-                                        }}
-                                    >
-                                        <img src="/background1.jpg" alt="" />
-                                    </div>
-                                    <div
-                                        className={styles.article__img_bar_div}
-                                        onClick={() => {
-                                            // setActive(1);
-                                            swiper.slideTo(1);
-                                        }}
-                                    >
-                                        <img src="/background2.jpg" alt="" />
-                                    </div>
-                                    <div
-                                        className={styles.article__img_bar_div}
-                                        onClick={() => {
-                                            // setActive(2);
-                                            swiper.slideTo(2);
-                                        }}
-                                    >
-                                        <img src="/background3.jpg" alt="" />
-                                    </div>
-                                    <div
-                                        className={styles.article__img_bar_div}
-                                        onClick={() => {
-                                            // setActive(3);
-                                            swiper.slideTo(3);
-                                        }}
-                                    >
-                                        <img src="/cart_divan.jpg" alt="" />
-                                    </div>
-                                    <div
-                                        className={styles.article__img_bar_div}
-                                        onClick={() => {
-                                            // setActive(4);
-                                            swiper.slideTo(4);
-                                        }}
-                                    >
-                                        <img src="/bedtatran.jpg" alt="" />
-                                    </div>
+                                    {product && product.images.length > 0 ? (
+                                        <div
+                                            className={
+                                                styles.article__img_bar_div
+                                            }
+                                            onClick={() => {
+                                                // setActive(0);
+                                                swiper.slideTo(0);
+                                            }}
+                                        >
+                                            <img
+                                                src={`/${product?.images[0]}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
+                                    {product && product?.images.length > 1 ? (
+                                        <div
+                                            className={
+                                                styles.article__img_bar_div
+                                            }
+                                            onClick={() => {
+                                                // setActive(1);
+                                                swiper.slideTo(1);
+                                            }}
+                                        >
+                                            <img
+                                                src={`/${product?.images[1]}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
+
+                                    {product && product.images.length > 2 ? (
+                                        <div
+                                            className={
+                                                styles.article__img_bar_div
+                                            }
+                                            onClick={() => {
+                                                // setActive(2);
+                                                swiper.slideTo(2);
+                                            }}
+                                        >
+                                            <img
+                                                src={`/${product?.images[2]}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
+                                    {product && product.images.length > 3 ? (
+                                        <div
+                                            className={
+                                                styles.article__img_bar_div
+                                            }
+                                            onClick={() => {
+                                                // setActive(3);
+                                                swiper.slideTo(3);
+                                            }}
+                                        >
+                                            <img
+                                                src={`/${product?.images[3]}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
+                                    {product && product.images.length > 4 ? (
+                                        <div
+                                            className={
+                                                styles.article__img_bar_div
+                                            }
+                                            onClick={() => {
+                                                // setActive(4);
+                                                swiper.slideTo(4);
+                                            }}
+                                        >
+                                            <img
+                                                src={`/${product?.images[4]}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                             </Swiper>
                         </div>

@@ -6,10 +6,16 @@ import { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
 import { getProducts } from "../../api/product.api";
 import { ProductCreateDto } from "../../dto/product";
+import { getUser } from "../../api/user.api";
+import { UserDto } from "../../dto/user";
 const Header = () => {
     const [isActive, setActive] = useState(false);
+    const [user, setUser] = useState<UserDto>();
     const navigate = useNavigate();
+    console.log(localStorage);
     const token = localStorage.getItem("token");
+    const id = JSON.parse(localStorage.getItem("user") || "{}");
+    console.log(id);
     const [focus, setFocus] = useState(false);
     const [focusInput, setFocusInput] = useState("");
     const [products, setProducts] = useState<ProductCreateDto[]>([]);
@@ -27,8 +33,20 @@ const Header = () => {
         fetchData();
     }, [focusInput]);
 
-    console.log(products);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getUser(id);
+                setUser(res);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
+        fetchData();
+    }, []);
+
+    console.log(user);
     return (
         <>
             <Modal isActive={isActive} setActive={setActive} />
@@ -119,6 +137,14 @@ const Header = () => {
                             >
                                 Профиль
                             </button>
+                            {user?.role === "admin" && (
+                                <button
+                                    onClick={() => navigate("/admin")}
+                                    className={styles.link}
+                                >
+                                    Админка
+                                </button>
+                            )}
                         </>
                     ) : (
                         <button
@@ -146,6 +172,15 @@ const Header = () => {
                                 >
                                     Профиль
                                 </button>
+
+                                {user?.role === "admin" && (
+                                    <button
+                                        onClick={() => navigate("/admin")}
+                                        className={styles.link}
+                                    >
+                                        Админка
+                                    </button>
+                                )}
                             </>
                         ) : (
                             <button
@@ -155,6 +190,7 @@ const Header = () => {
                                 Войти
                             </button>
                         )}
+
                         <button
                             className={styles.link}
                             onClick={() => navigate("/catalog")}

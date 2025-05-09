@@ -25,8 +25,8 @@ export interface ProductCreateDto {
     id: string;
     title: string;
     description: string;
-    image_ids: string[];
     price: number;
     discount: number;
     type: ProductType;
+    images: string[];
 }
